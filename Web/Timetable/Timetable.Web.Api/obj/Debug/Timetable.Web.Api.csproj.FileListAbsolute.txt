@@ -68,6 +68,5 @@ H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api\bin\Microsoft.AI.Dependenc
 H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api\bin\Microsoft.AI.ServerTelemetryChannel.xml
 H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api\bin\Microsoft.AI.WindowsServer.xml
 H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api\bin\Microsoft.AI.Web.xml
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api\obj\Debug\Timetable.Web.Api.csprojResolveAssemblyReference.cache
 H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api\obj\Debug\Timetable.Web.Api.dll
 H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api\obj\Debug\Timetable.Web.Api.pdb
