@@ -7,5 +7,6 @@ namespace Timetable.Web.Api.Repository.Interfaces
     public interface ITimeslotRepository : IRepository<Timeslot>
     {
         IList<Timeslot> GetTimeslotsForStudentId(long studentId);
+        bool Add(Timeslot item);
     }
 }

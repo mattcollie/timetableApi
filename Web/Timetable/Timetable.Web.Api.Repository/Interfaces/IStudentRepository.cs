@@ -6,5 +6,6 @@ namespace Timetable.Web.Api.Repository.Interfaces
     public interface IStudentRepository : IRepository<Student>
     {
         Student GetStudentByStudentId(long studentId);
+        bool Add(Student item);        
     }
 }
