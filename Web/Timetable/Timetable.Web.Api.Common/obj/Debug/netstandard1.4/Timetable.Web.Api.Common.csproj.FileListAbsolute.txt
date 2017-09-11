@@ -1,7 +1,0 @@
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Common\bin\Debug\netstandard1.4\Timetable.Web.Api.Common.deps.json
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Common\bin\Debug\netstandard1.4\Timetable.Web.Api.Common.dll
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Common\bin\Debug\netstandard1.4\Timetable.Web.Api.Common.pdb
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Common\obj\Debug\netstandard1.4\Timetable.Web.Api.Common.csprojResolveAssemblyReference.cache
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Common\obj\Debug\netstandard1.4\Timetable.Web.Api.Common.AssemblyInfo.cs
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Common\obj\Debug\netstandard1.4\Timetable.Web.Api.Common.dll
-H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Common\obj\Debug\netstandard1.4\Timetable.Web.Api.Common.pdb

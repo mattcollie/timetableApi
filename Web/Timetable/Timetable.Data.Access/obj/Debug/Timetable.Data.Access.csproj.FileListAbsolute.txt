@@ -1,0 +1,5 @@
+H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Access\bin\Debug\Timetable.Data.Access.dll
+H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Access\bin\Debug\Timetable.Data.Access.pdb
+H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Access\obj\Debug\Timetable.Data.Access.csprojResolveAssemblyReference.cache
+H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Access\obj\Debug\Timetable.Data.Access.dll
+H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Access\obj\Debug\Timetable.Data.Access.pdb

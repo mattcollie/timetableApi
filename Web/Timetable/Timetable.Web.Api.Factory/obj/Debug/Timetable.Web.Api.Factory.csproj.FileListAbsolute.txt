@@ -1,0 +1,4 @@
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Factory\bin\Debug\Timetable.Web.Api.Factory.dll
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Factory\bin\Debug\Timetable.Web.Api.Factory.pdb
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Factory\obj\Debug\Timetable.Web.Api.Factory.dll
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Factory\obj\Debug\Timetable.Web.Api.Factory.pdb

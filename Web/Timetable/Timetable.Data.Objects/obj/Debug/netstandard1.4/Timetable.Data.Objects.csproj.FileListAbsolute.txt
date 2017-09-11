@@ -1,6 +1,0 @@
-H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Objects\bin\Debug\netstandard1.4\Timetable.Data.Objects.deps.json
-H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Objects\bin\Debug\netstandard1.4\Timetable.Data.Objects.dll
-H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Objects\bin\Debug\netstandard1.4\Timetable.Data.Objects.pdb
-H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Objects\obj\Debug\netstandard1.4\Timetable.Data.Objects.AssemblyInfo.cs
-H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Objects\obj\Debug\netstandard1.4\Timetable.Data.Objects.dll
-H:\Repos\timetableApi\Web\Timetable\Timetable.Data.Objects\obj\Debug\netstandard1.4\Timetable.Data.Objects.pdb
