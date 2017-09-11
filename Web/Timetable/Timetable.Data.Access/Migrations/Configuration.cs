@@ -18,6 +18,7 @@ namespace Timetable.Data.Access.Migrations
         {
             Context = context;
             SeedStudents();
+            SeedTimeslots();
             Context.SaveChanges();
         }
 
@@ -26,7 +27,16 @@ namespace Timetable.Data.Access.Migrations
         private void SeedStudents()
         {
             Context.Students.Add(new Student { StudentId = 10001876, FirstName = "Matt", LastName = "Collecutt" });
-        } 
+        }
+
+        private void SeedTimeslots()
+        {
+            Context.Timeslots.Add(new Timeslot { Day = 0, Hour = 15, DurationMinutes = 120, StudentId = 10001876, PaperName = "BMGT6003", ClassName = "DT207", ClassType = "Lecture" });
+            Context.Timeslots.Add(new Timeslot { Day = 1, Hour = 8, DurationMinutes = 120, StudentId = 10001876, PaperName = "BMGT6003", ClassName = "DT303", ClassType = "Tutorial" });
+            Context.Timeslots.Add(new Timeslot { Day = 1, Hour = 15, DurationMinutes = 60, StudentId = 10001876, PaperName = "BMGT6003", ClassName = "DT303", ClassType = "Tutorial" });
+            Context.Timeslots.Add(new Timeslot { Day = 2, Hour = 8, DurationMinutes = 120, StudentId = 10001876, PaperName = "COMP6001", ClassName = "DT303", ClassType = "Tutorial" });
+            Context.Timeslots.Add(new Timeslot { Day = 3, Hour = 10, DurationMinutes = 120, StudentId = 10001876, PaperName = "COMP6001", ClassName = "DT303", ClassType = "Tutorial" });
+        }
 
         #endregion
     }

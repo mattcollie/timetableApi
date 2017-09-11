@@ -7,7 +7,7 @@ using Timetable.Data.Objects.Tables;
 
 namespace Timetable.Data.Access.Context
 {
-    [DbConfigurationType(typeof(TimetableContextConfiguration)]
+    [DbConfigurationType(typeof(TimetableContextConfiguration))]
     public class TimetableContext : DbContext
     {
         public TimetableContext() : base("name=DefaultConnection")
@@ -27,6 +27,7 @@ namespace Timetable.Data.Access.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Student>().ToTable("Students");
+            modelBuilder.Entity<Timeslot>().ToTable("Timeslots");
         }
 
         public new virtual IDbSet<T> Set<T>() where T : class
@@ -65,6 +66,7 @@ namespace Timetable.Data.Access.Context
         #region Entities
         
         public virtual IDbSet<Student> Students { get; set; }
+        public virtual IDbSet<Timeslot> Timeslots { get; set; }
 
         #endregion
     }
