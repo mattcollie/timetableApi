@@ -48,12 +48,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\TimetableContext.cs" />
+    <Compile Include="Context\TimetableContextConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Timetable.Common\Timetable.Common.csproj">
+      <Project>{da598fe7-6109-446a-9fdd-96045fb22610}</Project>
+      <Name>Timetable.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Timetable.Data.Objects\Timetable.Data.Objects.csproj">
+      <Project>{97ac9e73-6ab0-41d3-8ae5-51fbf841e7f7}</Project>
+      <Name>Timetable.Data.Objects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

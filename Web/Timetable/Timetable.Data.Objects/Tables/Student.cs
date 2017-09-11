@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Timetable.Common.BaseEntities;
 
@@ -16,5 +17,7 @@ namespace Timetable.Data.Objects.Tables
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public ICollection<Timeslot> Timeslots { get; set; }
     }
 }

@@ -49,10 +49,17 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\Student.cs" />
+    <Compile Include="Tables\Timeslot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Timetable.Common\Timetable.Common.csproj">
+      <Project>{da598fe7-6109-446a-9fdd-96045fb22610}</Project>
+      <Name>Timetable.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
