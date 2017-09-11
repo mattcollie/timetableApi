@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Timetable.Common.BaseEntities;
+using Timetable.Data.Objects.Tables;
 
 namespace Timetable.Data.Access.Context
 {
@@ -24,7 +25,8 @@ namespace Timetable.Data.Access.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
+            modelBuilder.Entity<Student>().ToTable("Students");
         }
 
         public new virtual IDbSet<T> Set<T>() where T : class
@@ -62,6 +64,7 @@ namespace Timetable.Data.Access.Context
 
         #region Entities
         
+        public virtual IDbSet<Student> Students { get; set; }
 
         #endregion
     }
