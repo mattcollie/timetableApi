@@ -1,0 +1,6 @@
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Repository\bin\Debug\netstandard1.4\Timetable.Web.Api.Repository.deps.json
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Repository\bin\Debug\netstandard1.4\Timetable.Web.Api.Repository.dll
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Repository\bin\Debug\netstandard1.4\Timetable.Web.Api.Repository.pdb
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Repository\obj\Debug\netstandard1.4\Timetable.Web.Api.Repository.AssemblyInfo.cs
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Repository\obj\Debug\netstandard1.4\Timetable.Web.Api.Repository.dll
+H:\Repos\timetableApi\Web\Timetable\Timetable.Web.Api.Repository\obj\Debug\netstandard1.4\Timetable.Web.Api.Repository.pdb
