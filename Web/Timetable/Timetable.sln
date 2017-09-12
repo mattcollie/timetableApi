@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timetable.Web.Api.Common", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timetable.Web.Api.Repository", "Timetable.Web.Api.Repository\Timetable.Web.Api.Repository.csproj", "{7B618028-8C13-46FA-A70E-D1EA63161F54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timetable.Web.Api.Service", "Timetable.Web.Api.Service\Timetable.Web.Api.Service.csproj", "{D3A4DAE3-AA12-4C34-A08A-FD30F88BB009}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,10 +49,6 @@ Global
 		{7B618028-8C13-46FA-A70E-D1EA63161F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B618028-8C13-46FA-A70E-D1EA63161F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B618028-8C13-46FA-A70E-D1EA63161F54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3A4DAE3-AA12-4C34-A08A-FD30F88BB009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3A4DAE3-AA12-4C34-A08A-FD30F88BB009}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3A4DAE3-AA12-4C34-A08A-FD30F88BB009}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3A4DAE3-AA12-4C34-A08A-FD30F88BB009}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +60,5 @@ Global
 		{97AC9E73-6AB0-41D3-8AE5-51FBF841E7F7} = {BA9DB68C-D05A-4011-947A-0631CD148CE0}
 		{96EC5675-A845-4915-B4E2-0E543A304A99} = {8313EE2F-9F2E-4873-BBC6-2058C88EC94F}
 		{7B618028-8C13-46FA-A70E-D1EA63161F54} = {8313EE2F-9F2E-4873-BBC6-2058C88EC94F}
-		{D3A4DAE3-AA12-4C34-A08A-FD30F88BB009} = {8313EE2F-9F2E-4873-BBC6-2058C88EC94F}
 	EndGlobalSection
 EndGlobal

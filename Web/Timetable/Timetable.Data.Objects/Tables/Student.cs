@@ -9,9 +9,7 @@ namespace Timetable.Data.Objects.Tables
     public class Student : BaseEntity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long StudentId { get; set; }
 
         public string FirstName { get; set; }
