@@ -16,6 +16,8 @@ namespace Timetable.Data.Objects.Tables
 
         public string LastName { get; set; }
 
+        public long? BarcodeId { get; set; }
+
         public ICollection<Timeslot> Timeslots { get; set; }
     }
 }

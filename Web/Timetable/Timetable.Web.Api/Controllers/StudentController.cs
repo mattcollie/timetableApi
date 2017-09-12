@@ -31,19 +31,19 @@ namespace Timetable.Web.Api.Controllers
         }
 
         [HttpPut]
-        [Route("add/{studentId}/{firstName}/{lastName}")]
-        public bool Add(long studentId, string firstName, string lastName)
+        [Route("add/{studentId}/{firstName}/{lastName}/{barcodeId?}")]
+        public bool Add(long studentId, string firstName, string lastName, long? barcodeId = null)
         {
             if (StudentRepository.GetById(studentId) != null) return false;
-            return StudentRepository.Add(new Student { StudentId = studentId, FirstName = firstName, LastName = lastName });
+            return StudentRepository.Add(new Student { StudentId = studentId, FirstName = firstName, LastName = lastName, BarcodeId = barcodeId });
         }
         
         [HttpPut]
-        [Route("update/{studentId}/{firstName}/{lastName}")]
-        public bool Update(long studentId, string firstName, string lastName)
+        [Route("update/{studentId}/{firstName}/{lastName}/{barcodeId?}")]
+        public bool Update(long studentId, string firstName, string lastName, long? barcodeId = null)
         {
             if (StudentRepository.GetById(studentId) == null) return false;
-            return StudentRepository.Update(studentId, new Student { FirstName = firstName, LastName = lastName });
+            return StudentRepository.Update(studentId, new Student { FirstName = firstName, LastName = lastName, BarcodeId = barcodeId });
         }
 
         [HttpDelete]
