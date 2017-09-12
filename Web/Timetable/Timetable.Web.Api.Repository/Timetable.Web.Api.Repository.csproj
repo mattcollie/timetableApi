@@ -54,6 +54,10 @@
     <Compile Include="Repositories\TimeslotRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Timetable.Common\Timetable.Common.csproj">
+      <Project>{DA598FE7-6109-446A-9FDD-96045FB22610}</Project>
+      <Name>Timetable.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Timetable.Data.Access\Timetable.Data.Access.csproj">
       <Project>{543dfa1a-b771-4db2-ae73-6e17243b352b}</Project>
       <Name>Timetable.Data.Access</Name>

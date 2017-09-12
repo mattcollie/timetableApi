@@ -3,17 +3,18 @@ using System.Web.Http;
 using Timetable.Data.Objects.Tables;
 using Timetable.Web.Api.Repository.Interfaces;
 
-
 namespace Timetable.Web.Api.Controllers
 {
-    [RoutePrefix("api/player")]
+    [RoutePrefix("api/student")]
     public class StudentController : ApiController
     {
         protected IStudentRepository StudentRepository { get; set; }
+        protected ITimeslotRepository TimeslotRepository { get; set; }
 
-        public StudentController(IStudentRepository repository)
+        public StudentController(IStudentRepository studentRepository, ITimeslotRepository timeslotRepository)
         {
-            StudentRepository = repository;
+            StudentRepository = studentRepository;
+            TimeslotRepository = timeslotRepository;
         }
 
         [HttpGet]
@@ -23,10 +24,35 @@ namespace Timetable.Web.Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetStudent/{studentId}")]
-        public Student GetStudent(long studentId)
+        [Route("get/{studentId}")]
+        public Student Get(long studentId)
         {
             return StudentRepository.GetById(studentId);
+        }
+
+        [HttpPut]
+        [Route("add/{studentId}/{firstName}/{lastName}")]
+        public bool Add(long studentId, string firstName, string lastName)
+        {
+            if (StudentRepository.GetById(studentId) != null) return false;
+            return StudentRepository.Add(new Student { StudentId = studentId, FirstName = firstName, LastName = lastName });
+        }
+        
+        [HttpPut]
+        [Route("update/{studentId}/{firstName}/{lastName}")]
+        public bool Update(long studentId, string firstName, string lastName)
+        {
+            if (StudentRepository.GetById(studentId) == null) return false;
+            return StudentRepository.Update(studentId, new Student { FirstName = firstName, LastName = lastName });
+        }
+
+        [HttpDelete]
+        [Route("delete/{studentId}")]
+        public bool Delete(long studentId)
+        {
+            if(TimeslotRepository.DeleteByStudentId(studentId))
+                return StudentRepository.Delete(studentId);
+            return false;
         }
     }
 }

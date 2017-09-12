@@ -8,5 +8,7 @@ namespace Timetable.Web.Api.Repository.Interfaces
     {
         IList<Timeslot> GetTimeslotsForStudentId(long studentId);
         bool Add(Timeslot item);
+        bool DeleteByStudentId(long studentId);
+        bool Update(long id, Timeslot item);
     }
 }

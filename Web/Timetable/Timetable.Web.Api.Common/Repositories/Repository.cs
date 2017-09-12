@@ -47,7 +47,7 @@ namespace Timetable.Web.Api.Common.Repositories
             return SaveChanges() > 0;
         }
 
-        private int SaveChanges()
+        protected int SaveChanges()
         {
             return Context.SaveChanges();
         }
