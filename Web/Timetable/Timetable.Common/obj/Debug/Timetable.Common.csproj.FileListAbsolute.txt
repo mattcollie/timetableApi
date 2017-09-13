@@ -1,4 +1,0 @@
-H:\Repos\timetableApi\Web\Timetable\Timetable.Common\bin\Debug\Timetable.Common.dll
-H:\Repos\timetableApi\Web\Timetable\Timetable.Common\bin\Debug\Timetable.Common.pdb
-H:\Repos\timetableApi\Web\Timetable\Timetable.Common\obj\Debug\Timetable.Common.dll
-H:\Repos\timetableApi\Web\Timetable\Timetable.Common\obj\Debug\Timetable.Common.pdb
