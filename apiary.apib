@@ -1,80 +1,323 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://timesheetapi/
 
-# swiftassesmentapi
+# Swift Assesment 2 Api
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Timesheet-API (swiftassesmentapi) is a simple API which stores and makes available timetable information for students in the class room
 
-## Questions Collection [/questions]
+# Allowed HTTPs requests:
+<pre>
+PUT     : To create resource 
+POST    : Update resource
+GET     : Get a resource or list of resources
+DELETE  : To delete resource
+</pre>
 
-### List All Questions [GET]
+# Description Of Usual Server Responses:
+- 200 `OK` - the request was successful (some API calls may return 201 instead).
+- 201 `Created` - the request was successful and a resource was created.
+- 204 `No Content` - the request was successful but there is no representation to return (i.e. the response is empty).
+- 400 `Bad Request` - the request could not be understood or was missing required parameters.
+- 401 `Unauthorized` - authentication failed or user doesn't have permissions for requested operation.
+- 403 `Forbidden` - access denied.
+- 404 `Not Found` - resource was not found.
+- 405 `Method Not Allowed` - requested method is not supported for resource.
+- 410 `Gone` - Indicates that the resource requested is no longer available and will not be available again
+
+# Group Student
+Represents student details. 
+
+---
+**Student attributes:**
+
+- StudentId `(Number)` : Student unique identifier. 
+- FirstName `(String)` : First Name.
+- LastName `(String)` : Last Name.
+- BarcodeId `(Nullable Number)` : Barcode identifier if one exists.
+- CreatedAt `(DateTime)` : Created at Datetime
+- UpdatedAt `(DateTime)` : Updated at Datetime
+- Deleted `(Boolean)` : Is the student Deleted Flag
+
+---
+## Student Collection [/student]
+### List all students [GET]
+Retrieve complete list of student.
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "StudentId": 10001876,
+                "FirstName": "Matt",
+                "LastName": "Collecutt",
+                "BarcodeId": null,
+                "CreatedAt": "2017-09-12T21:35:06.13",
+                "UpdatedAt": "2017-09-12T21:35:06.13",
+                "IsDeleted": false
             }
         ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
+        
+### Create a Student [PUT]
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "StudentId": 1004756,
+            "FirstName": "John",
+            "LastName": "Doe",
+            "BarcodeId": 231324
         }
 
 + Response 201 (application/json)
 
-    + Headers
++ Response 210 (application/json)
 
-            Location: /questions/2
+## Student [/student/{id}]
+A single Student object with all its details
+
++ Parameters
+    + id (required, Number, `1`) ... Numeric `id` of the User to perform action with.
+
+### Retrieve a User [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: 1004756
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "StudentId": 1004756,
+                "FirstName": "John",
+                "LastName": "Rodger",
+                "BarcodeId": 231324,
+                "CreatedAt": "2017-09-12T21:35:06.13",
+                "UpdatedAt": "2017-09-12T21:35:06.13",
+                "IsDeleted": false
+            }
+            
+
+### Update a Student [POST]
++ Request (application/json)
+
+        {
+            "StudentId": 1004756,
+            "FirstName": "John",
+            "LastName": "Rodger",
+            "BarcodeId": 231324
+        }
+
++ Response 201 (application/json)
+
+### Remove a User [DELETE]
++ Response 204
+
+
+# Group Timeslot
+Represents timeslot details. 
+
+---
+**Timeslot attributes:**
+
+- Id `(Number)` : Timeslot unique identifier. 
+- Day `(Number)` : Day Number.
+- Hour `(Number)` : Hour.
+- DurationMinutes `(Number)` : Duration in Minutes.
+- ClassName `(String)` : Class name.
+- PaperName `(String)` : Paper name.
+- ClassType `(String)` : Class Type.
+- StudentId `(Number)` : Student unique identifier.
+- CreatedAt `(DateTime)` : Created at Datetime
+- UpdatedAt `(DateTime)` : Updated at Datetime
+- Deleted `(Boolean)` : Is the student Deleted Flag
+
+---
+## Timeslot Collection [/timeslot]
+### List all Timeslots [GET]
+Retrieve complete list of timeslots.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": 1,
+                "Day": 0,
+                "Hour": 15,
+                "DurationMinutes": 120,
+                "ClassName": "DT207",
+                "PaperName": "BMGT6003",
+                "ClassType": "Lecture",
+                "StudentId": 10001876,
+                "CreatedAt": "2017-09-13T22:38:05.82",
+                "UpdatedAt": "2017-09-13T22:38:05.82",
+                "IsDeleted": false
+            },
+            {
+                "Id": 2,
+                "Day": 1,
+                "Hour": 8,
+                "DurationMinutes": 120,
+                "ClassName": "DT303",
+                "PaperName": "BMGT6003",
+                "ClassType": "Tutorial",
+                "StudentId": 10001876,
+                "CreatedAt": "2017-09-13T22:38:05.82",
+                "UpdatedAt": "2017-09-13T22:38:05.82",
+                "IsDeleted": false
+            },
+            {
+                "Id": 3,
+                "Day": 1,
+                "Hour": 15,
+                "DurationMinutes": 60,
+                "ClassName": "DT303",
+                "PaperName": "BMGT6003",
+                "ClassType": "Tutorial",
+                "StudentId": 10001876,
+                "CreatedAt": "2017-09-13T22:38:05.82",
+                "UpdatedAt": "2017-09-13T22:38:05.82",
+                "IsDeleted": false
+            },
+            {
+                "Id": 4,
+                "Day": 2,
+                "Hour": 8,
+                "DurationMinutes": 120,
+                "ClassName": "DT303",
+                "PaperName": "COMP6001",
+                "ClassType": "Tutorial",
+                "StudentId": 10001876,
+                "CreatedAt": "2017-09-13T22:38:05.82",
+                "UpdatedAt": "2017-09-13T22:38:05.82",
+                "IsDeleted": false
+            },
+            {
+                "Id": 5,
+                "Day": 3,
+                "Hour": 10,
+                "DurationMinutes": 120,
+                "ClassName": "DT303",
+                "PaperName": "COMP6001",
+                "ClassType": "Tutorial",
+                "StudentId": 10001876,
+                "CreatedAt": "2017-09-13T22:38:05.82",
+                "UpdatedAt": "2017-09-13T22:38:05.82",
+                "IsDeleted": false
+            }
+        ]
+        
+### Create a Timeslot(s) [PUT]
+
++ Request (application/json)
+
+        {
+            "Day": 4,
+            "Hour": 10,
+            "DurationMinutes": 120,
+            "ClassName": "DT303",
+            "PaperName": "COMP6001",
+            "ClassType": "Tutorial",
+            "StudentId": 10001876,
+        }
+        
++ Request (application/json)
+
+        [
+            {
+                "Day": 5,
+                "Hour": 10,
+                "DurationMinutes": 120,
+                "ClassName": "DT303",
+                "PaperName": "COMP6001",
+                "ClassType": "Tutorial",
+                "StudentId": 10001876
+            },
+            {
+                "Day": 5,
+                "Hour": 14,
+                "DurationMinutes": 120,
+                "ClassName": "DT303",
+                "PaperName": "COMP6001",
+                "ClassType": "Lecture",
+                "StudentId": 10001876
+            }
+        ]
+
++ Response 201 (application/json)
+
+## Timeslot [/timeslot/{id}]
+A single timeslot object with all its details
+
++ Parameters
+    + id (required, Number, `1`) ... Numeric `id` of the User to perform action with.
+
+### Retrieve a Timeslot [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: 5
+
+    + Body
+
+            {
+                "Id": 5,
+                "Day": 3,
+                "Hour": 10,
+                "DurationMinutes": 120,
+                "ClassName": "DT303",
+                "PaperName": "COMP6001",
+                "ClassType": "Tutorial",
+                "StudentId": 10001876,
+                "CreatedAt": "2017-09-13T22:38:05.82",
+                "UpdatedAt": "2017-09-13T22:38:05.82",
+                "IsDeleted": false
+            }
+
+### Update a Timeslot [POST]
++ Request (application/json)
+
+        {
+            "Day": 3,
+            "Hour": 10,
+            "DurationMinutes": 120,
+            "ClassName": "DT303",
+            "PaperName": "COMP6001",
+            "ClassType": "Lecture",
+            "StudentId": 10001876
+        }
+
++ Response 201 (application/json)
+
+### Remove a Timeslot [DELETE]
++ Response 204
+
+
+## Student Timeslots [/timeslot/getStudentTimeslots/{id}]
+A collection timeslot object associated with a student with all its details
+
++ Parameters
+    + id (required, Number, `1`) ... Numeric `id` of the User to perform action with.
+
+### Retrieve Student Timeslots [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: 5
+
+    + Body
+
+            {
+                "Id": 5,
+                "Day": 3,
+                "Hour": 10,
+                "DurationMinutes": 120,
+                "ClassName": "DT303",
+                "PaperName": "COMP6001",
+                "ClassType": "Tutorial",
+                "StudentId": 10001876,
+                "CreatedAt": "2017-09-13T22:38:05.82",
+                "UpdatedAt": "2017-09-13T22:38:05.82",
+                "IsDeleted": false
             }
