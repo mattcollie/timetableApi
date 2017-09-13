@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
+using System.Net;
+using System.Web.Mvc;
 using Timetable.Data.Objects.Tables;
 using Timetable.Web.Api.Repository.Interfaces;
 
 namespace Timetable.Web.Api.Controllers
 {
     [RoutePrefix("api/timeslot")]
-    public class TimeslotController : ApiController
+    public class TimeslotController : System.Web.Http.ApiController
     {
         protected IStudentRepository StudentRepository { get; set; }
         protected ITimeslotRepository TimeslotRepository { get; set; }
@@ -19,45 +20,53 @@ namespace Timetable.Web.Api.Controllers
         }
 
         [HttpGet]
-        public IQueryable<Timeslot> Index()
+        public IQueryable<Timeslot> Get()
         {
             return TimeslotRepository.All();
         }
 
         [HttpGet]
-        [Route("get/{timeslotId}")]
-        public Timeslot Get(long timeslotId)
+        [Route("{id}")]
+        public Timeslot Get(long id)
         {
-            return TimeslotRepository.GetById(timeslotId);
+            return TimeslotRepository.GetById(id);
+        }
+
+        [HttpGet]
+        [Route("getStudentTimeslots/{id}")]
+        public IList<Timeslot> GetStudentTimeslots(long id)
+        {
+            return TimeslotRepository.GetTimeslotsForStudentId(id);
         }
 
         [HttpPut]
-        [Route("add/{timeslots}")]
-        public bool Add(IList<Timeslot> timeslots)
+        [Route("{timeslots}")]
+        public ActionResult Put(IList<Timeslot> timeslots)
         {
-            return timeslots.All(t => TimeslotRepository.Add(t));
+            return new HttpStatusCodeResult(timeslots.All(t => TimeslotRepository.Add(t)) ? HttpStatusCode.Created : HttpStatusCode.Gone);
         }
 
         [HttpPut]
-        [Route("add/{day}/{hour}/{duration}/{studentId}/{className}/{paperName}/{classType?}")]
-        public bool Add(int day, int hour, int duration, long studentId, string className, string paperName, string classType = "tutorial")
+        [Route("{timeslot}")]
+        public ActionResult Put(Timeslot timeslot)
         {
-            return TimeslotRepository.Add(new Timeslot { Day = day, Hour = hour, DurationMinutes = duration, StudentId = studentId, ClassName = className, PaperName = paperName, ClassType = classType });
+            return new HttpStatusCodeResult(TimeslotRepository.Add(timeslot) ? HttpStatusCode.Created : HttpStatusCode.Gone);
         }
         
-        [HttpPut]
-        [Route("update/{timeslotId}/{day}/{hour}/{duration}/{studentId}/{className}/{paperName}/{classType}")]
-        public bool Update(long timeslotId, int day, int hour, int duration, long studentId, string className, string paperName, string classType)
+        [HttpPost]
+        [Route("{timeslot}")]
+        public ActionResult Update(Timeslot timeslot)
         {
-            if (TimeslotRepository.GetById(timeslotId) == null) return false;
-            return TimeslotRepository.Update(timeslotId, new Timeslot { Day = day, Hour = hour, DurationMinutes = duration, StudentId = studentId, ClassName = className, PaperName = paperName, ClassType = classType });
+            if (TimeslotRepository.GetById(timeslot.Id) == null) return new HttpStatusCodeResult(HttpStatusCode.Gone);
+            return new HttpStatusCodeResult(TimeslotRepository.Update(timeslot.Id, timeslot) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
         }
 
         [HttpDelete]
-        [Route("delete/{timeslotId}")]
-        public bool Delete(long timeslotId)
+        [Route("{id}")]
+        public ActionResult Delete(long id)
         {
-            return TimeslotRepository.Delete(timeslotId);
+            if (TimeslotRepository.GetById(id) == null) return new HttpStatusCodeResult(HttpStatusCode.Gone);
+            return new HttpStatusCodeResult(TimeslotRepository.Delete(id) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
         }
     }
 }

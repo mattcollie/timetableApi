@@ -1,12 +1,13 @@
 ﻿using System.Linq;
-using System.Web.Http;
+using System.Net;
+using System.Web.Mvc;
 using Timetable.Data.Objects.Tables;
 using Timetable.Web.Api.Repository.Interfaces;
 
 namespace Timetable.Web.Api.Controllers
 {
     [RoutePrefix("api/student")]
-    public class StudentController : ApiController
+    public class StudentController : System.Web.Http.ApiController
     {
         protected IStudentRepository StudentRepository { get; set; }
         protected ITimeslotRepository TimeslotRepository { get; set; }
@@ -18,41 +19,42 @@ namespace Timetable.Web.Api.Controllers
         }
 
         [HttpGet]
-        public IQueryable<Student> Index()
+        public IQueryable<Student> Get()
         {
             return StudentRepository.All();
         }
 
         [HttpGet]
-        [Route("get/{studentId}")]
+        [Route("{studentId}")]
         public Student Get(long studentId)
         {
             return StudentRepository.GetById(studentId);
         }
 
         [HttpPut]
-        [Route("add/{studentId}/{firstName}/{lastName}/{barcodeId?}")]
-        public bool Add(long studentId, string firstName, string lastName, long? barcodeId = null)
+        [Route("{student}")]
+        public ActionResult Put(Student student)
         {
-            if (StudentRepository.GetById(studentId) != null) return false;
-            return StudentRepository.Add(new Student { StudentId = studentId, FirstName = firstName, LastName = lastName, BarcodeId = barcodeId });
+            if (StudentRepository.GetById(student.StudentId) != null) return new HttpStatusCodeResult(HttpStatusCode.Gone);
+            return new HttpStatusCodeResult(StudentRepository.Add(student) ? HttpStatusCode.Created : HttpStatusCode.Gone);
         }
         
-        [HttpPut]
-        [Route("update/{studentId}/{firstName}/{lastName}/{barcodeId?}")]
-        public bool Update(long studentId, string firstName, string lastName, long? barcodeId = null)
+        [HttpPost]
+        [Route("{student}")]
+        public ActionResult Post(Student student)
         {
-            if (StudentRepository.GetById(studentId) == null) return false;
-            return StudentRepository.Update(studentId, new Student { FirstName = firstName, LastName = lastName, BarcodeId = barcodeId });
+            if (StudentRepository.GetById(student.StudentId) == null) return new HttpStatusCodeResult(HttpStatusCode.Gone);
+            return new HttpStatusCodeResult(StudentRepository.Update(student.StudentId, student) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
         }
 
         [HttpDelete]
-        [Route("delete/{studentId}")]
-        public bool Delete(long studentId)
+        [Route("{id}")]
+        public ActionResult Delete(long id)
         {
-            if(TimeslotRepository.DeleteByStudentId(studentId))
-                return StudentRepository.Delete(studentId);
-            return false;
+            if (StudentRepository.GetById(id) == null) return new HttpStatusCodeResult(HttpStatusCode.Gone);
+            if (TimeslotRepository.DeleteByStudentId(id))
+                return new HttpStatusCodeResult(StudentRepository.Delete(id) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
+            return new HttpStatusCodeResult(HttpStatusCode.Gone);
         }
     }
 }

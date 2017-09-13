@@ -18,6 +18,6 @@ namespace Timetable.Data.Objects.Tables
 
         public long? BarcodeId { get; set; }
 
-        public ICollection<Timeslot> Timeslots { get; set; }
+        public virtual ICollection<Timeslot> Timeslots { get; set; }
     }
 }
