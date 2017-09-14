@@ -27,18 +27,11 @@ namespace Timetable.Web.Api.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public Timeslot Get(long id)
-        {
-            return TimeslotRepository.GetById(id);
-        }
-
-        [HttpGet]
-        [Route("getStudentTimeslots/{id}")]
-        public IList<Timeslot> GetStudentTimeslots(long id)
+        public IList<Timeslot> Get(long id)
         {
             return TimeslotRepository.GetTimeslotsForStudentId(id);
         }
-
+        
         [HttpPut]
         [Route("{timeslots}")]
         public ActionResult Put(IList<Timeslot> timeslots)
