@@ -246,33 +246,87 @@ Retrieve complete list of timeslots.
 + Response 201 (application/json)
 
 ## Timeslot [/timeslot/{id}]
-A single timeslot object with all its details
+A collection timeslot object associated with a student with all its details
 
 + Parameters
-    + id (required, Number, `1`) ... Numeric `id` of the User to perform action with.
+    + id (required, Number, `10001876`) ... Numeric `id` of the Student to with linked timeslots.
 
 ### Retrieve a Timeslot [GET]
 + Response 200 (application/json)
 
     + Header
 
-            X-My-Header: 5
+            X-My-Header: 10001876
 
     + Body
 
-            {
-                "Id": 5,
-                "Day": 3,
-                "Hour": 10,
-                "DurationMinutes": 120,
-                "ClassName": "DT303",
-                "PaperName": "COMP6001",
-                "ClassType": "Tutorial",
-                "StudentId": 10001876,
-                "CreatedAt": "2017-09-13T22:38:05.82",
-                "UpdatedAt": "2017-09-13T22:38:05.82",
-                "IsDeleted": false
-            }
+            [
+                {
+                    "Id": 1,
+                    "Day": 0,
+                    "Hour": 15,
+                    "DurationMinutes": 120,
+                    "ClassName": "DT207",
+                    "PaperName": "BMGT6003",
+                    "ClassType": "Lecture",
+                    "StudentId": 10001876,
+                    "CreatedAt": "2017-09-13T22:38:05.82",
+                    "UpdatedAt": "2017-09-13T22:38:05.82",
+                    "IsDeleted": false
+                },
+                {
+                    "Id": 2,
+                    "Day": 1,
+                    "Hour": 8,
+                    "DurationMinutes": 120,
+                    "ClassName": "DT303",
+                    "PaperName": "BMGT6003",
+                    "ClassType": "Tutorial",
+                    "StudentId": 10001876,
+                    "CreatedAt": "2017-09-13T22:38:05.82",
+                    "UpdatedAt": "2017-09-13T22:38:05.82",
+                    "IsDeleted": false
+                },
+                {
+                    "Id": 3,
+                    "Day": 1,
+                    "Hour": 15,
+                    "DurationMinutes": 60,
+                    "ClassName": "DT303",
+                    "PaperName": "BMGT6003",
+                    "ClassType": "Tutorial",
+                    "StudentId": 10001876,
+                    "CreatedAt": "2017-09-13T22:38:05.82",
+                    "UpdatedAt": "2017-09-13T22:38:05.82",
+                    "IsDeleted": false
+                },
+                {
+                    "Id": 4,
+                    "Day": 2,
+                    "Hour": 8,
+                    "DurationMinutes": 120,
+                    "ClassName": "DT303",
+                    "PaperName": "COMP6001",
+                    "ClassType": "Tutorial",
+                    "StudentId": 10001876,
+                    "CreatedAt": "2017-09-13T22:38:05.82",
+                    "UpdatedAt": "2017-09-13T22:38:05.82",
+                    "IsDeleted": false
+                },
+                {
+                    "Id": 5,
+                    "Day": 3,
+                    "Hour": 10,
+                    "DurationMinutes": 120,
+                    "ClassName": "DT303",
+                    "PaperName": "COMP6001",
+                    "ClassType": "Tutorial",
+                    "StudentId": 10001876,
+                    "CreatedAt": "2017-09-13T22:38:05.82",
+                    "UpdatedAt": "2017-09-13T22:38:05.82",
+                    "IsDeleted": false
+                }
+            ]
 
 ### Update a Timeslot [POST]
 + Request (application/json)
@@ -291,33 +345,3 @@ A single timeslot object with all its details
 
 ### Remove a Timeslot [DELETE]
 + Response 204
-
-
-## Student Timeslots [/timeslot/getStudentTimeslots/{id}]
-A collection timeslot object associated with a student with all its details
-
-+ Parameters
-    + id (required, Number, `1`) ... Numeric `id` of the User to perform action with.
-
-### Retrieve Student Timeslots [GET]
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: 5
-
-    + Body
-
-            {
-                "Id": 5,
-                "Day": 3,
-                "Hour": 10,
-                "DurationMinutes": 120,
-                "ClassName": "DT303",
-                "PaperName": "COMP6001",
-                "ClassType": "Tutorial",
-                "StudentId": 10001876,
-                "CreatedAt": "2017-09-13T22:38:05.82",
-                "UpdatedAt": "2017-09-13T22:38:05.82",
-                "IsDeleted": false
-            }
