@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
@@ -8,9 +8,9 @@ using Timetable.Data.Objects.Tables;
 namespace Timetable.Data.Access.Context
 {
     [DbConfigurationType(typeof(TimetableContextConfiguration))]
-    public class TimetableContext : DbContext
+    public partial class TimetableContext : DbContext
     {
-        public TimetableContext() : base("name=DefaultConnection")
+        public TimetableContext() : base("name=TimetableContext")
         {
 
         }
@@ -64,7 +64,7 @@ namespace Timetable.Data.Access.Context
         #endregion
 
         #region Entities
-        
+
         public virtual IDbSet<Student> Students { get; set; }
         public virtual IDbSet<Timeslot> Timeslots { get; set; }
 

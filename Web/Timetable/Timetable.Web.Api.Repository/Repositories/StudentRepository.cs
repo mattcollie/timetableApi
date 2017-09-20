@@ -11,7 +11,7 @@ namespace Timetable.Web.Api.Repository.Repositories
     {
         public StudentRepository(TimetableContext context) : base(context)
         {
-
+            
         }
 
         public Student GetStudentByStudentId(long studentId)
