@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web.Mvc;
+using System.Web.Http;
 using Timetable.Data.Objects.Tables;
 using Timetable.Web.Api.Repository.Interfaces;
 
 namespace Timetable.Web.Api.Controllers
 {
     [RoutePrefix("api/timeslot")]
-    public class TimeslotController : System.Web.Http.ApiController
+    public class TimeslotController : ApiController
     {
         protected IStudentRepository StudentRepository { get; set; }
         protected ITimeslotRepository TimeslotRepository { get; set; }
@@ -19,47 +19,47 @@ namespace Timetable.Web.Api.Controllers
             TimeslotRepository = timeslotRepository;
         }
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public IQueryable<Timeslot> Get()
         {
             return TimeslotRepository.All();
         }
 
-        [HttpGet]
-        [Route("{id}")]
+        [System.Web.Mvc.HttpGet]
+        [System.Web.Mvc.Route("{id}")]
         public IList<Timeslot> Get(long id)
         {
             return TimeslotRepository.GetTimeslotsForStudentId(id);
         }
         
-        [HttpPut]
-        [Route("{timeslots}")]
-        public ActionResult Put(IList<Timeslot> timeslots)
+        [System.Web.Mvc.HttpPut]
+        [System.Web.Mvc.Route("{timeslots}")]
+        public System.Web.Mvc.ActionResult Put(IList<Timeslot> timeslots)
         {
-            return new HttpStatusCodeResult(timeslots.All(t => TimeslotRepository.Add(t)) ? HttpStatusCode.Created : HttpStatusCode.Gone);
+            return new System.Web.Mvc.HttpStatusCodeResult(timeslots.All(t => TimeslotRepository.Add(t)) ? HttpStatusCode.Created : HttpStatusCode.Gone);
         }
 
-        [HttpPut]
-        [Route("{timeslot}")]
-        public ActionResult Put(Timeslot timeslot)
+        [System.Web.Mvc.HttpPut]
+        [System.Web.Mvc.Route("{timeslot}")]
+        public System.Web.Mvc.ActionResult Put(Timeslot timeslot)
         {
-            return new HttpStatusCodeResult(TimeslotRepository.Add(timeslot) ? HttpStatusCode.Created : HttpStatusCode.Gone);
+            return new System.Web.Mvc.HttpStatusCodeResult(TimeslotRepository.Add(timeslot) ? HttpStatusCode.Created : HttpStatusCode.Gone);
         }
         
-        [HttpPost]
-        [Route("{timeslot}")]
-        public ActionResult Update(Timeslot timeslot)
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.Route("{timeslot}")]
+        public System.Web.Mvc.ActionResult Update(Timeslot timeslot)
         {
-            if (TimeslotRepository.GetById(timeslot.Id) == null) return new HttpStatusCodeResult(HttpStatusCode.Gone);
-            return new HttpStatusCodeResult(TimeslotRepository.Update(timeslot.Id, timeslot) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
+            if (TimeslotRepository.GetById(timeslot.Id) == null) return new System.Web.Mvc.HttpStatusCodeResult(HttpStatusCode.Gone);
+            return new System.Web.Mvc.HttpStatusCodeResult(TimeslotRepository.Update(timeslot.Id, timeslot) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
         }
 
-        [HttpDelete]
-        [Route("{id}")]
-        public ActionResult Delete(long id)
+        [System.Web.Mvc.HttpDelete]
+        [System.Web.Mvc.Route("{id}")]
+        public System.Web.Mvc.ActionResult Delete(long id)
         {
-            if (TimeslotRepository.GetById(id) == null) return new HttpStatusCodeResult(HttpStatusCode.Gone);
-            return new HttpStatusCodeResult(TimeslotRepository.Delete(id) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
+            if (TimeslotRepository.GetById(id) == null) return new System.Web.Mvc.HttpStatusCodeResult(HttpStatusCode.Gone);
+            return new System.Web.Mvc.HttpStatusCodeResult(TimeslotRepository.Delete(id) ? HttpStatusCode.NoContent : HttpStatusCode.Gone);
         }
     }
 }

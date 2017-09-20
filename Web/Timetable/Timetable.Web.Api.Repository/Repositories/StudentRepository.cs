@@ -14,6 +14,11 @@ namespace Timetable.Web.Api.Repository.Repositories
             
         }
 
+        public Student GetStudentByBarcodeId(long barcodeId)
+        {
+            return Context.Students.FirstOrDefault(n => n.BarcodeId == barcodeId);
+        }
+
         public Student GetStudentByStudentId(long studentId)
         {
             return Context.Students.FirstOrDefault(n => n.StudentId == studentId);
