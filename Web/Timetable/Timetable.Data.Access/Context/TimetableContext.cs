@@ -10,7 +10,7 @@ namespace Timetable.Data.Access.Context
     [DbConfigurationType(typeof(TimetableContextConfiguration))]
     public partial class TimetableContext : DbContext
     {
-        public TimetableContext() : base("name=TimetableContext")
+        public TimetableContext() : base("name=DefaultConnection")
         {
 
         }
